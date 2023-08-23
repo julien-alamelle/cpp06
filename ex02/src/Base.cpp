@@ -4,7 +4,7 @@
 
 Base::~Base() {;}
 
-Base *	Base::generate() {
+Base * generate() {
 	int i = rand();
 	switch (i%3) {
 		case 0:
@@ -16,7 +16,7 @@ Base *	Base::generate() {
 	}
 }
 
-void	Base::identify(Base* p) {
+void identify(Base* p) {
 	Base* res;
 	res = dynamic_cast<A*> (p);
 	if (res) {
@@ -36,7 +36,7 @@ void	Base::identify(Base* p) {
 	std::cout << "woopsie\n";
 }
 
-void	Base::identify(Base& p) {
+void identify(Base& p) {
 	try {
 		(void) dynamic_cast<A&> (p);
 		std::cout << "real type is A\n";
