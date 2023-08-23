@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <limits>
+#include <cmath>
 
 ScalarConverter::ScalarConverter() {;}
 ScalarConverter::ScalarConverter(const ScalarConverter &src) {(void) src;}
@@ -42,12 +43,20 @@ bool static getdouble(std::string s, double &ret) {
 
 void static printchar(double d) {
 	std::cout << "char: ";
-	if (d > std::numeric_limits<char>::max() || d < std::numeric_limits<char>::min())
+	if (d > std::numeric_limits<char>::max() || d < std::numeric_limits<char>::min() || std::isnan(d))
 		std::cout << "impossible\n";
 	else if (d >= 128 || d < 32)
 		std::cout << "Non displayable\n";
 	else
 		std::cout << static_cast<char> (d) << std::endl;
+}
+
+void static printint(double d) {
+	std::cout << "int: ";
+	if (d > std::numeric_limits<int>::max() || d < std::numeric_limits<int>::min() || std::isnan(d))
+		std::cout << "impossible\n";
+	else
+		std::cout << static_cast<int> (d) << std::endl;
 }
 
 void ScalarConverter::convert(std::string s) {
@@ -57,7 +66,7 @@ void ScalarConverter::convert(std::string s) {
 		return;
 	}
 	printchar(d);
-	std::cout << "int: "    << static_cast<int> (d) << std::endl;
-	std::cout << "float: "  << static_cast<float> (d) << std::endl;
+	printint(d);
+	std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
 	std::cout << "double: " << d << std::endl;
 }
