@@ -24,6 +24,7 @@ bool static getdouble(std::string s, double &ret) {
 	while (it != s.end()) {
 		if (*it == '.' && !point) point = true;
 		else if (*it >= '0' && *it <= '9') digit = true;
+		else if (*it == 'f' && (it+1) == s.end()) break;
 		else {
 			digit = false;
 			break;
