@@ -49,7 +49,7 @@ void static printchar(double d) {
 	else if (d >= 128 || d < 32)
 		std::cout << "Non displayable\n";
 	else
-		std::cout << static_cast<char> (d) << std::endl;
+		std::cout << '\'' << static_cast<char> (d) << '\'' << std::endl;
 }
 
 void static printint(double d) {
